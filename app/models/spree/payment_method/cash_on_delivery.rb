@@ -1,6 +1,3 @@
-# Added By Vishal Patil
-# For Cash on Delivery payment method
-# Last modified 24 march 2014
 module Spree
   class PaymentMethod::CashOnDelivery < PaymentMethod
     
@@ -28,6 +25,10 @@ module Spree
 
     def source_required?
       false
+    end
+
+    def credit(money, credit_card, response_code, options = {})
+      ActiveMerchant::Billing::Response.new(true, "", {}, {})
     end
   end
 end
